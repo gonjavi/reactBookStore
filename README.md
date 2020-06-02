@@ -23,7 +23,7 @@ You will also see any lint errors in the console.
 
 ## Live Demo
 
-[Live Demo Link]()
+[Live Demo Link](https://bookstore-g.herokuapp.com/)
 
 ### Prerequisites
 
