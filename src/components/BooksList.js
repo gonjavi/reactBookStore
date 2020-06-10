@@ -33,11 +33,7 @@ class BooksList extends React.Component {
         {bookList}     
       </Table>
     );
-
-
-
-  }
- 
+  } 
 };
 
 const mapStateToProps = ({ state }) => books: state.books,
