@@ -5,8 +5,6 @@ import Col from 'react-bootstrap/Col';
 import BooksList from './components/BooksList';
 import BooksForm from './components/BookForm';
 
-import './App.css';
-
 function App() {
   return (
     <Container fluid>
