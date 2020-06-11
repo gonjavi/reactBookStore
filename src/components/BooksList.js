@@ -2,11 +2,10 @@ import React from 'react';
 import Table from 'react-bootstrap/Table';
 import { connect } from 'react-redux';
 
-const BooksList = books => { 
-  let bookList;
+const BooksList = books => {   
   if (books) {
-    books.map(book => {
-      bookList =(
+   const bookList = books.map(book => {
+      (
         <tbody key={book.id}>
           <tr>
             <td>{book.id}</td>
@@ -16,7 +15,7 @@ const BooksList = books => {
         </tbody>      
       );
     }
-  },
+  };
   return (
     <Table striped bordered hover>
       <thead>
