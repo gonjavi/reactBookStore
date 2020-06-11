@@ -3,7 +3,7 @@ import Table from 'react-bootstrap/Table';
 import { connect } from 'react-redux';
 
 class BooksList extends React.Component {
-  render(){
+  render() {
     const { books } = this.props
     const bookList = books.length ? (
       books.map(book => {
@@ -18,7 +18,7 @@ class BooksList extends React.Component {
         )
       })
     ) : (
-      <div className="center">No posts to show</div>
+      <div className="center">No Books available</div>
     );
     
     return (
@@ -36,7 +36,11 @@ class BooksList extends React.Component {
   } 
 };
 
-const mapStateToProps = ({ state }) => books: state.books,
+const mapStateToProps = state => {
+  return {
+    books: state.book.books,
+  };
+};
 
 
 
