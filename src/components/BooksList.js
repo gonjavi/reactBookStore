@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 
 class BooksList extends React.Component {
   render() {
-    const { books } = this.props
-    const bookList = books.length ? (
+    const { books } = this.props;
+    const bookList = books ? (
       books.map(book => {
         return (
           <tbody>
@@ -14,13 +14,12 @@ class BooksList extends React.Component {
               <td>{book.title}</td>
               <td>{book.category}</td>
             </tr>
-          </tbody>           
-        )
+          </tbody>
+        );
       })
     ) : (
-      <div className="center">No Books available</div>
+      <div>No Books available</div>
     );
-    
     return (
       <Table striped bordered hover>
         <thead>
@@ -29,19 +28,18 @@ class BooksList extends React.Component {
             <th>Title</th>
             <th>Category</th>
           </tr>
-        </thead>   
-        {bookList}     
+        </thead>
+        {bookList}
       </Table>
     );
-  } 
-};
+  }
+}
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
+  const id = ownProps.match.params.book_id;
   return {
-    books: state.book.books,
+    books: state.books.find(book => book.id === id),
   };
 };
-
-
 
 export default connect(mapStateToProps)(BooksList);

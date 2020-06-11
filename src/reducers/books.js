@@ -11,15 +11,15 @@ const booksReducer = (state = { books: []}, action) => {
         },
       ];
     case 'REMOVE_BOOK':
-      let books = state.books.filter(book => {
+      const books = state.books.filter(book => {
         return action.id !== book.id
       });
       return {
         ...state,
-      books,
-      }
+        books,
+      };
     default:
-      return state,
+      return state;
   }
 };
 
