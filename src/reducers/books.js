@@ -1,5 +1,34 @@
+const initialState = {
+  books: [
+    {
+      id: () => (Math.random() * 500).toFixed(),
+      title: 'Educated',
+      category: 'Biography',
+    },
+    {
+      id: () => (Math.random() * 500).toFixed(),
+      title: 'Ready player',
+      category: 'Action',
+    },
+    {
+      id: () => (Math.random() * 500).toFixed(),
+      title: 'A woman of no importance',
+      category: 'History',
+    },
+    {
+      id: () => (Math.random() * 500).toFixed(),
+      title: 'The stand',
+      category: 'Horror',
+    },
+    {
+      id: () => (Math.random() * 500).toFixed(),
+      title: 'Brave new world',
+      category: 'Sci-Fi',
+    },
+  ],
+};
 
-const booksReducer = (state = { books: []}, action) => {
+const booksReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'CREATE_BOOK':
       return [
@@ -7,17 +36,14 @@ const booksReducer = (state = { books: []}, action) => {
         {
           id: action.id,
           title: action.title,
-          category: action.category
+          category: action.category,
         },
       ];
     case 'REMOVE_BOOK':
-      const books = state.books.filter(book => {
-        return action.id !== book.id
-      });
-      return {
+      return [
         ...state,
-        books,
-      };
+        state.books.filter(book => action.book !== book),
+      ];
     default:
       return state;
   }

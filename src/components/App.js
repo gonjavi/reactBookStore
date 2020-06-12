@@ -2,8 +2,8 @@ import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import BooksList from './components/BooksList';
-import BooksForm from './components/BookForm';
+import BooksForm from '../containers/BookForm';
+import BooksList from '../containers/BooksList';
 
 function App() {
   return (
