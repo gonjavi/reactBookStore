@@ -5,7 +5,7 @@ import Book from '../components/Book';
 
 const BooksList = books => {
   // eslint-disable-next-line max-len
-  const BooksList = books.books.books.map(b => <Book key={b.bookId} bookId={b.bookId} title={b.title} category={b.category} />);
+  const BooksList = books.books.books.map(b => <Book key={b.bookId} bookId={b.id} title={b.title} category={b.category} />);
   return (
     <Table striped bordered hover>
       <thead>
