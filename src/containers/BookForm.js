@@ -4,29 +4,43 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 
-const Categories = ['Action', 'Biography', 'History', 'Horror', 'Kids', 'Learning', 'Sci-Fi'];
 
-const BookForm = () => (
-  <div>
-    <Form>
-      <Form.Group controlId="formBasicEmail">
-        <Form.Label>Book title</Form.Label>
-        <Form.Control type="text" placeholder="book title" />
-      </Form.Group>
+class BookForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      title: null,
+      category: null,
+    };
+  }
 
-      <DropdownButton
-        as={ButtonGroup}
-        key={Categories}
-        id={`dropdown-variants-${Categories}`}
-        title={Categories}
-      >
-        Categories
-      </DropdownButton>
-      <Button variant="primary" type="submit">
-        Submit
-      </Button>
-    </Form>
-  </div>
-);
+  render() {
+    const { title } = this.state;
+    let { category } = this.state;
+    category = ['Action', 'Biography', 'History', 'Horror', 'Kids', 'Learning', 'Sci-Fi'];
+    return (
+      <div>
+        <Form>
+          <Form.Group controlId="formBasicText">
+            <Form.Label>Book title</Form.Label>
+            <Form.Control type="text" value={title} placeholder="book title" />
+          </Form.Group>
+
+          <DropdownButton
+            as={ButtonGroup}
+            key={category}
+            id={`dropdown-variants-${category}`}
+            title="Categories"
+          >
+            Categories
+          </DropdownButton>
+          <Button variant="primary" type="submit">
+            Submit
+          </Button>
+        </Form>
+      </div>
+    );
+  }
+}
 
 export default BookForm;
