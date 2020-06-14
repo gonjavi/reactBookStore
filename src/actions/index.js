@@ -1,4 +1,3 @@
-
 export const createBook = book => ({
   type: 'ADD_BOOK',
   book,

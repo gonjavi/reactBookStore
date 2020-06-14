@@ -6,7 +6,6 @@ import Col from 'react-bootstrap/Col';
 import BooksForm from '../containers/BookForm';
 import BooksList from '../containers/BooksList';
 
-
 function App() {
   return (
     <Container>
