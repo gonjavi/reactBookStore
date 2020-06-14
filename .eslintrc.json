@@ -1,3 +1,4 @@
+ 
 {
   "env": {
     "browser": true,
@@ -18,9 +19,5 @@
     "import/no-unresolved": "off",
     "no-shadow": "off",
     "arrow-parens": ["error", "as-needed"]
-  },
-  "ignorePatterns": [
-    "dist/",
-    "build/"
-  ]
+  }
 }
