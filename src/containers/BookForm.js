@@ -18,7 +18,7 @@ class BookForm extends React.Component {
     const { title } = this.state;
     let { category } = this.state;
     category = ['Action', 'Biography', 'History', 'Horror', 'Kids', 'Learning', 'Sci-Fi'];
-    const categories = category.map(catego=> <Dropdown.Item eventKey={catego}>{catego}</Dropdown.Item>);
+    const categories = category.map(cat => <Dropdown.Item key={cat}>{cat}</Dropdown.Item>);
     return (
       <div>
         <Form>
@@ -33,7 +33,7 @@ class BookForm extends React.Component {
             id={`dropdown-variants-${category}`}
             title="Categories"
           >
-          {categories}
+            {categories}
           </DropdownButton>
           <Button variant="primary" type="submit">
             Submit
