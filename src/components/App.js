@@ -5,6 +5,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import BooksForm from '../containers/BookForm';
 import BooksList from '../containers/BooksList';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (

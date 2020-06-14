@@ -3,6 +3,7 @@ import DropdownButton from 'react-bootstrap/DropdownButton';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
+import Dropdown from 'react-bootstrap/Dropdown';
 
 class BookForm extends React.Component {
   constructor(props) {
@@ -17,6 +18,7 @@ class BookForm extends React.Component {
     const { title } = this.state;
     let { category } = this.state;
     category = ['Action', 'Biography', 'History', 'Horror', 'Kids', 'Learning', 'Sci-Fi'];
+    const categories = category.map(catego=> <Dropdown.Item eventKey={catego}>{catego}</Dropdown.Item>);
     return (
       <div>
         <Form>
@@ -31,7 +33,7 @@ class BookForm extends React.Component {
             id={`dropdown-variants-${category}`}
             title="Categories"
           >
-            Categories
+          {categories}
           </DropdownButton>
           <Button variant="primary" type="submit">
             Submit
