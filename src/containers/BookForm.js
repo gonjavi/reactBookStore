@@ -4,6 +4,8 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Dropdown from 'react-bootstrap/Dropdown';
+import { connect } from 'react-redux';
+import createBook from '../actions/index';
 
 class BookForm extends React.Component {
   constructor(props) {
@@ -11,17 +13,17 @@ class BookForm extends React.Component {
     this.state = {
       title: '',
       category: '',
-      // eslint-disable-next-line react/no-unused-state
       id: '',
     };
     this.handleChange = this.handleChange.bind(this);
-    // this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.handleSelect = this.handleSelect.bind(this);
   }
 
   handleChange(e) {
     this.setState({
       title: e.target.value,
+      id: (Math.random() * 500).toFixed(),
     });
   }
 
@@ -31,23 +33,22 @@ class BookForm extends React.Component {
     });
   }
 
-  handleSubmit() {
-
+  handleSubmit(e) {
+    e.preventDefault();
+    const book = this.state;
+    console.log(book);
   }
 
   render() {
-    const { title } = this.state;
-    const { category } = this.state;
-    console.log(category);
+    const { title, category, id } = this.state;
     const title1 = category || 'Categories';
     return (
       <div>
         <Form onSubmit={this.handleSubmit}>
           <Form.Group controlId="validationCustom01">
             <Form.Label>Book title</Form.Label>
-            <Form.Control type="text" value={title} onChange={this.handleChange} placeholder="book title" required />
+            <Form.Control type="text" key={id} value={title} onChange={this.handleChange} placeholder="book title" required />
           </Form.Group>
-
           <DropdownButton
             as={ButtonGroup}
             key="category"
@@ -70,5 +71,10 @@ class BookForm extends React.Component {
     );
   }
 }
+const mapDispatchToProps = dispatch => {
+  return {
+    createBook: book => dispatch(createBook(book)),
+  };
+};
 
-export default BookForm;
+export default connect(mapDispatchToProps)(BookForm);
