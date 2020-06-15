@@ -9,9 +9,16 @@ class BookForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: null,
-      category: null,
+      title: '',
+      category: '',
     };
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(e) {
+    this.setState({
+      title: e.target.value,
+    });
   }
 
   render() {
@@ -22,15 +29,15 @@ class BookForm extends React.Component {
     return (
       <div>
         <Form>
-          <Form.Group controlId="formBasicText">
+          <Form.Group controlId="validationCustom01">
             <Form.Label>Book title</Form.Label>
-            <Form.Control type="text" value={title} placeholder="book title" />
+            <Form.Control type="text" value={title} onChange={this.handleChange} placeholder="book title" required />
           </Form.Group>
 
           <DropdownButton
             as={ButtonGroup}
-            key={category}
-            id={`dropdown-variants-${category}`}
+            key={categories}
+            id={`dropdown-variants-${categories}`}
             title="Categories"
           >
             {categories}
