@@ -22,8 +22,6 @@ class BookForm extends React.Component {
   handleChange(e) {
     this.setState({
       title: e.target.value,
-      // eslint-disable-next-line react/no-unused-state
-      id: (Math.random() * 500).toFixed(),
     });
   }
 
@@ -36,28 +34,7 @@ class BookForm extends React.Component {
   render() {
     const { title } = this.state;
     const { category } = this.state;
-    const category1 = ['Action', 'Biography', 'History', 'Horror', 'Kids', 'Learning', 'Sci-Fi'];
-    const categories = category1.map(category => (
-      <DropdownButton
-        as={ButtonGroup}
-        key={category}
-        id={`dropdown-variants-${category}`}
-        variant={category.toLowerCase()}
-        title={category}
-        
-      >
-        
-        <Dropdown.Item onSelect={this.handleSelect} eventKey="2">Another action</Dropdown.Item>
-        <Dropdown.Item eventKey="3" active>
-          Active Item
-        </Dropdown.Item>
-        <Dropdown.Divider />
-        <Dropdown.Item eventKey="4">Separated link</Dropdown.Item>
-      </DropdownButton>
-    ));
-
     console.log(category);
-    console.log(title);
     return (
       <div>
         <Form onSubmit={this.handleSubmit}>
@@ -66,10 +43,23 @@ class BookForm extends React.Component {
             <Form.Control type="text" value={title} onChange={this.handleChange} placeholder="book title" required />
           </Form.Group>
 
-          {categories}
-          <Button variant="primary" type="submit">
-            Submit
-          </Button>
+          <DropdownButton
+            as={ButtonGroup}
+            key="category"
+            id={`dropdown-variants-${category}`}
+            title="Categories"
+          >
+            <Dropdown.Item onSelect={this.handleSelect} eventKey="Action">Action</Dropdown.Item> 
+            <Dropdown.Item onSelect={this.handleSelect} eventKey="Biography">Biography</Dropdown.Item>
+            <Dropdown.Item onSelect={this.handleSelect} eventKey="History">History</Dropdown.Item> 
+            <Dropdown.Item onSelect={this.handleSelect} eventKey="Horror">Horror</Dropdown.Item> 
+            <Dropdown.Item onSelect={this.handleSelect} eventKey="Kids">Kids</Dropdown.Item> 
+            <Dropdown.Item onSelect={this.handleSelect} eventKey="Learning">Learning</Dropdown.Item> 
+            <Dropdown.Item onSelect={this.handleSelect} eventKey="Sci-Fi">Sci-Fi</Dropdown.Item>             
+            <Button variant="primary" type="submit">
+              Submit
+            </Button>
+          </DropdownButton>
         </Form>
       </div>
     );
