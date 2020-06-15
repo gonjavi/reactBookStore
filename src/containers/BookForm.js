@@ -31,10 +31,15 @@ class BookForm extends React.Component {
     });
   }
 
+  handleSubmit() {
+
+  }
+
   render() {
     const { title } = this.state;
     const { category } = this.state;
     console.log(category);
+    const title1 = category || 'Categories';
     return (
       <div>
         <Form onSubmit={this.handleSubmit}>
@@ -47,19 +52,19 @@ class BookForm extends React.Component {
             as={ButtonGroup}
             key="category"
             id={`dropdown-variants-${category}`}
-            title="Categories"
+            title={title1}
           >
-            <Dropdown.Item onSelect={this.handleSelect} eventKey="Action">Action</Dropdown.Item> 
+            <Dropdown.Item onSelect={this.handleSelect} eventKey="Action">Action</Dropdown.Item>
             <Dropdown.Item onSelect={this.handleSelect} eventKey="Biography">Biography</Dropdown.Item>
-            <Dropdown.Item onSelect={this.handleSelect} eventKey="History">History</Dropdown.Item> 
-            <Dropdown.Item onSelect={this.handleSelect} eventKey="Horror">Horror</Dropdown.Item> 
-            <Dropdown.Item onSelect={this.handleSelect} eventKey="Kids">Kids</Dropdown.Item> 
-            <Dropdown.Item onSelect={this.handleSelect} eventKey="Learning">Learning</Dropdown.Item> 
-            <Dropdown.Item onSelect={this.handleSelect} eventKey="Sci-Fi">Sci-Fi</Dropdown.Item>             
-            <Button variant="primary" type="submit">
-              Submit
-            </Button>
+            <Dropdown.Item onSelect={this.handleSelect} eventKey="History">History</Dropdown.Item>
+            <Dropdown.Item onSelect={this.handleSelect} eventKey="Horror">Horror</Dropdown.Item>
+            <Dropdown.Item onSelect={this.handleSelect} eventKey="Kids">Kids</Dropdown.Item>
+            <Dropdown.Item onSelect={this.handleSelect} eventKey="Learning">Learning</Dropdown.Item>
+            <Dropdown.Item onSelect={this.handleSelect} eventKey="Sci-Fi">Sci-Fi</Dropdown.Item>
           </DropdownButton>
+          <Button variant="primary" type="submit">
+            Submit
+          </Button>
         </Form>
       </div>
     );
