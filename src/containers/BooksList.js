@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Table from 'react-bootstrap/Table';
 import Book from '../components/Book';
@@ -13,18 +14,20 @@ class BooksList extends React.Component {
       books,
       onClick,
     };
+    this.handleRemove = this.handleRemove.bind(this);
   }
 
-  /* handleRemove() {
-    console.log('delete');
-    // this.books.removeBook(this.books.book);
+  handleRemove(id) {
+    console.log(id);
+    // eslint-disable-next-line react/destructuring-assignment
+    this.props.removeBook(id);
   }
- */
+ 
   render() {
     const { books } = this.state;
     const { onClick } = this.props;
     const BooksList = books.books.map(
-      b => <Book key={b.id} Id={b.id} title={b.title} cat={b.category} Click={onClick} />,
+      b => <Book key={b.id} Id={b.id} title={b.title} cat={b.category} Click={() => this.handleRemove(b.id)} />,
     );
 
     return (
@@ -43,20 +46,18 @@ class BooksList extends React.Component {
   }
 }
 
+BooksList.propTypes = {
+  removeBook: PropTypes.func.isRequired,
+};
+
 const mapStateToProps = state => ({
   books: state,
 });
 
-// eslint-disable-next-line arrow-body-style
 const mapDispatchToProps = dispatch => ({
   removeBook: id => {
-    dispatch(() => removeBook(id));
+    dispatch(removeBook(id));
   },
 });
-/* const mapDispatchToProps = dispatch => ({
-  onMyAction: value => {
-    dispatch(() => console.log(`${value}`));
-  },
-}); */
 
 export default connect(mapStateToProps, mapDispatchToProps)(BooksList);
