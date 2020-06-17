@@ -2,28 +2,29 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Table from 'react-bootstrap/Table';
 import Book from '../components/Book';
-// eslint-disable-next-line import/no-named-as-default
 import removeBook from '../actions/index';
 
 class BooksList extends React.Component {
   constructor(props) {
     super(props);
     // eslint-disable-next-line react/prop-types
-    const { books } = props;
+    const { books, onClick } = props;
     this.state = {
       books,
+      onClick,
     };
-    this.handleRemove = this.handleRemove.bind(this);
   }
 
-  handleRemove() {
-    this.books.removeBook(this.books.books);
+  /* handleRemove() {
+    console.log('delete');
+    // this.books.removeBook(this.books.book);
   }
-
+ */
   render() {
     const { books } = this.state;
+    const { onClick } = this.props;
     const BooksList = books.books.map(
-      b => <Book key={b.id} Id={b.id} title={b.title} cat={b.category} Click={this.handleRemove} />,
+      b => <Book key={b.id} Id={b.id} title={b.title} cat={b.category} Click={onClick} />,
     );
 
     return (
@@ -47,8 +48,15 @@ const mapStateToProps = state => ({
 });
 
 // eslint-disable-next-line arrow-body-style
-const mapDispatchToprops = dispatch => {
-  return { removeBook: id => dispatch(removeBook(id)) };
-};
+const mapDispatchToProps = dispatch => ({
+  removeBook: id => {
+    dispatch(() => removeBook(id));
+  },
+});
+/* const mapDispatchToProps = dispatch => ({
+  onMyAction: value => {
+    dispatch(() => console.log(`${value}`));
+  },
+}); */
 
-export default connect(mapStateToProps, mapDispatchToprops)(BooksList);
+export default connect(mapStateToProps, mapDispatchToProps)(BooksList);

@@ -7,23 +7,35 @@ import BooksForm from '../containers/BookForm';
 import BooksList from '../containers/BooksList';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-function App() {
-  return (
-    <Container>
-      <Row>
-        <Col />
-        <Col>
-          <BrowserRouter>
-            <Switch>
-              <Route exact path="/" component={BooksList} />
-              <Route path="/new" component={BooksForm} />
-            </Switch>
-          </BrowserRouter>
-        </Col>
-        <Col />
-      </Row>
-    </Container>
-  );
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleRemove = this.handleRemove.bind(this);
+  }
+
+  handleRemove() {
+    console.log('delete');
+    this.books.removeBook(this.books.book);
+  }
+
+  render() {
+    return (
+      <Container>
+        <Row>
+          <Col />
+          <Col>
+            <BrowserRouter>
+              <Switch>
+                <Route exact path="/" component={() => <BooksList onClick={this.handleRemove} /> }/>
+                <Route path="/new" component={BooksForm} />
+              </Switch>
+            </BrowserRouter>
+          </Col>
+          <Col />
+        </Row>
+      </Container>
+    );
+  }
 }
 
 export default App;
