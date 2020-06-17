@@ -1,22 +1,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Button from 'react-bootstrap/Button';
 
 const Book = props => {
-  const { bookId, title, category } = props;
+  const {
+    Id,
+    title,
+    cat,
+    Click,
+  } = props;
   return (
-    <tbody key={bookId}>
+    <tbody key={Id}>
       <tr>
-        <td>{bookId}</td>
+        <td>{Id}</td>
         <td>{title}</td>
-        <td>{category}</td>
+        <td>{cat}</td>
+        <td><Button onClick={() => Click()} variant="secondary" type="button">Delete</Button></td>
       </tr>
     </tbody>
   );
 };
 Book.propTypes = {
-  bookId: PropTypes.string.isRequired,
+  Id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  category: PropTypes.string.isRequired,
+  cat: PropTypes.string.isRequired,
+  Click: PropTypes.func.isRequired,
 };
 
 export default Book;
