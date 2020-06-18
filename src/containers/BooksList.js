@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Table from 'react-bootstrap/Table';
 import Book from '../components/Book';
-import removeBook from '../actions/index';
+import { removeBook } from '../actions/index';
 
 class BooksList extends React.Component {
   constructor(props) {
@@ -18,9 +18,9 @@ class BooksList extends React.Component {
   }
 
   handleRemove(id) {
-    console.log(id);
     // eslint-disable-next-line react/destructuring-assignment
     this.props.removeBook(id);
+    console.log(this.state);
   }
  
   render() {
@@ -55,9 +55,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  removeBook: id => {
-    dispatch(removeBook(id));
-  },
+  removeBook: id => dispatch(removeBook(id)),
+
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(BooksList);

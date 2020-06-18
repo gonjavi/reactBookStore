@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Dropdown from 'react-bootstrap/Dropdown';
 import { connect } from 'react-redux';
-import createBook from '../actions/index';
+import { createBook } from '../actions/index';
 
 class BookForm extends React.Component {
   constructor(props) {
