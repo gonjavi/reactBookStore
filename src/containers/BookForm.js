@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -36,6 +37,8 @@ class BookForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const book = this.state;
+    // eslint-disable-next-line react/destructuring-assignment
+    this.props.createBook(book);
     console.log(book);
   }
 
@@ -71,8 +74,13 @@ class BookForm extends React.Component {
     );
   }
 }
+
+BookForm.propTypes = {
+  createBook: PropTypes.func.isRequired,
+};
+
 const mapDispatchToProps = dispatch => ({
   createBook: book => dispatch(createBook(book)),
 });
 
-export default connect(mapDispatchToProps)(BookForm);
+export default connect(null, mapDispatchToProps)(BookForm);

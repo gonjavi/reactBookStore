@@ -9,10 +9,9 @@ class BooksList extends React.Component {
   constructor(props) {
     super(props);
     // eslint-disable-next-line react/prop-types
-    const { books, onClick } = props;
+    const { books } = props;
     this.state = {
       books,
-      onClick,
     };
     this.handleRemove = this.handleRemove.bind(this);
   }
@@ -20,13 +19,12 @@ class BooksList extends React.Component {
   handleRemove(id) {
     // eslint-disable-next-line react/destructuring-assignment
     this.props.removeBook(id);
-    console.log(this.state);
   }
- 
+
   render() {
     const { books } = this.state;
-    const { onClick } = this.props;
     const BooksList = books.books.map(
+      // eslint-disable-next-line max-len
       b => <Book key={b.id} Id={b.id} title={b.title} cat={b.category} Click={() => this.handleRemove(b.id)} />,
     );
 
@@ -56,7 +54,6 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   removeBook: id => dispatch(removeBook(id)),
-
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(BooksList);
