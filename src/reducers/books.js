@@ -6,11 +6,7 @@ const booksReducer = (state = [], action) => {
         action.book,
       ];
     case 'DELETE_BOOK':
-      return [
-        ...state,
-       // state.filter((data, i) => i !== action.id);
-        state.filter(book => book.id !== action.id),
-      ];
+      return state.filter(book => book.id !== action.id);
     default:
       return state;
   }
