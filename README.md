@@ -6,7 +6,8 @@ This is a Book Store app built with React, Redux, and Bootstrap.
 
 In the project directory, you can run:
 ### Prerequisites
-npm 6.13.14
+- npm 6.14.5
+- node 14.3.0
 
 ### Setup
 
