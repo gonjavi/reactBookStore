@@ -12,9 +12,9 @@ class BookForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      id: '',
       title: '',
       category: '',
-      id: '',
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -39,7 +39,6 @@ class BookForm extends React.Component {
     const book = this.state;
     // eslint-disable-next-line react/destructuring-assignment
     this.props.createBook(book);
-    console.log(book);
   }
 
   render() {

@@ -8,11 +8,6 @@ import { removeBook } from '../actions/index';
 class BooksList extends React.Component {
   constructor(props) {
     super(props);
-    // eslint-disable-next-line react/prop-types
-    const { books } = props;
-    this.state = {
-      books,
-    };
     this.handleRemove = this.handleRemove.bind(this);
   }
 
@@ -22,7 +17,7 @@ class BooksList extends React.Component {
   }
 
   render() {
-    const { books } = this.state;
+    const { books } = this.props;
     const BooksList = books.books.map(
       // eslint-disable-next-line max-len
       b => <Book key={b.id} Id={b.id} title={b.title} cat={b.category} Click={() => this.handleRemove(b.id)} />,
@@ -46,6 +41,7 @@ class BooksList extends React.Component {
 
 BooksList.propTypes = {
   removeBook: PropTypes.func.isRequired,
+  books: PropTypes.instanceOf(Array).isRequired,
 };
 
 const mapStateToProps = state => ({
