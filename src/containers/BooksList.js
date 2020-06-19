@@ -12,15 +12,22 @@ class BooksList extends React.Component {
   }
 
   handleRemove(id) {
-    // eslint-disable-next-line react/destructuring-assignment
-    this.props.removeBook(id);
+    const { removeBook } = this.props;
+    removeBook(id);
   }
 
   render() {
     const { books } = this.props;
     const BooksList = books.books.map(
-      // eslint-disable-next-line max-len
-      b => <Book key={b.id} Id={b.id} title={b.title} cat={b.category} Click={() => this.handleRemove(b.id)} />,
+      b => (
+        <Book
+          key={b.id}
+          Id={b.id}
+          title={b.title}
+          cat={b.category}
+          Click={() => this.handleRemove(b.id)}
+        />
+      ),
     );
 
     return (

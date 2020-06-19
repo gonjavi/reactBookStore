@@ -1,10 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import DropdownButton from 'react-bootstrap/DropdownButton';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import ButtonGroup from 'react-bootstrap/ButtonGroup';
-import Dropdown from 'react-bootstrap/Dropdown';
 import { connect } from 'react-redux';
 import { createBook } from '../actions/index';
 
@@ -18,53 +15,45 @@ class BookForm extends React.Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleSelect = this.handleSelect.bind(this);
   }
 
   handleChange(e) {
+    const { target: { value, name } } = e;
     this.setState({
-      title: e.target.value,
+      [name]: value,
       id: (Math.random() * 500).toFixed(),
-    });
-  }
-
-  handleSelect(evt) {
-    this.setState({
-      category: evt,
     });
   }
 
   handleSubmit(e) {
     e.preventDefault();
     const book = this.state;
-    // eslint-disable-next-line react/destructuring-assignment
-    this.props.createBook(book);
+    const { createBook } = this.props;
+    createBook(book);
   }
 
   render() {
     const { title, category, id } = this.state;
-    const title1 = category || 'Categories';
     return (
       <div>
         <Form onSubmit={this.handleSubmit}>
           <Form.Group controlId="validationCustom01">
             <Form.Label>Book title</Form.Label>
-            <Form.Control type="text" key={id} value={title} onChange={this.handleChange} placeholder="book title" required />
+            <Form.Control type="text" key={id} name="title" value={title} onChange={this.handleChange} placeholder="book title" required />
           </Form.Group>
-          <DropdownButton
-            as={ButtonGroup}
-            key="category"
-            id={`dropdown-variants-${category}`}
-            title={title1}
-          >
-            <Dropdown.Item onSelect={this.handleSelect} eventKey="Action">Action</Dropdown.Item>
-            <Dropdown.Item onSelect={this.handleSelect} eventKey="Biography">Biography</Dropdown.Item>
-            <Dropdown.Item onSelect={this.handleSelect} eventKey="History">History</Dropdown.Item>
-            <Dropdown.Item onSelect={this.handleSelect} eventKey="Horror">Horror</Dropdown.Item>
-            <Dropdown.Item onSelect={this.handleSelect} eventKey="Kids">Kids</Dropdown.Item>
-            <Dropdown.Item onSelect={this.handleSelect} eventKey="Learning">Learning</Dropdown.Item>
-            <Dropdown.Item onSelect={this.handleSelect} eventKey="Sci-Fi">Sci-Fi</Dropdown.Item>
-          </DropdownButton>
+          <Form.Group controlId="Form.ControlSelect1">
+            <Form.Label>Category</Form.Label>
+            <Form.Control name="category" value={category} onChange={this.handleChange} as="select">
+              <option> -</option>
+              <option>Action</option>
+              <option>Biography</option>
+              <option>History</option>
+              <option>Horror</option>
+              <option>Kids</option>
+              <option>Learning</option>
+              <option>Sci-Fi</option>
+            </Form.Control>
+          </Form.Group>
           <Button variant="primary" type="submit">
             Submit
           </Button>
