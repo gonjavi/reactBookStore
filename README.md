@@ -1,24 +1,29 @@
 ## React Book Store
-This a Boos Store app built with ReactJS. Using CSS, and props.
+This is a Book Store app built with React and Redux Using React-Bootstrap.
 
 ![screenshot](./)
 
 
 In the project directory, you can run:
+### Prerequisites
+npm 6.13.14
 
-## yarn start
+### Setup
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Run $npm install   -to install all dependencies from a package.json file
+- Run on the command line: $npm start
+- You will see the project on broswer
+- [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
 
+
 ## Built With
 
-- ReactJS
-- Redux 
-- CSS
+- React 16.13.1
+- Redux 4.0.5
+- React-Bootstrap 4.5
 - Visual Code
 
 ## Live Demo
