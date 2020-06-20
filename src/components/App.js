@@ -1,5 +1,4 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -13,12 +12,14 @@ function App() {
       <Row>
         <Col />
         <Col>
-          <BrowserRouter>
-            <Switch>
-              <Route exact path="/" component={BooksList} />
-              <Route path="/new" component={BooksForm} />
-            </Switch>
-          </BrowserRouter>
+          <BooksForm />
+        </Col>
+        <Col />
+      </Row>
+      <Row>
+        <Col />
+        <Col>
+          <BooksList />
         </Col>
         <Col />
       </Row>

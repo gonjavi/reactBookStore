@@ -1,40 +1,59 @@
 import React from 'react';
-import DropdownButton from 'react-bootstrap/DropdownButton';
+import PropTypes from 'prop-types';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import ButtonGroup from 'react-bootstrap/ButtonGroup';
-import Dropdown from 'react-bootstrap/Dropdown';
+import { connect } from 'react-redux';
+import { createBook } from '../actions/index';
 
 class BookForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: null,
-      category: null,
+      id: '',
+      title: '',
+      category: '',
     };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(e) {
+    const { target: { value, name } } = e;
+    this.setState({
+      [name]: value,
+      id: (Math.random() * 500).toFixed(),
+    });
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    const book = this.state;
+    const { createBook } = this.props;
+    createBook(book);
   }
 
   render() {
-    const { title } = this.state;
-    let { category } = this.state;
-    category = ['Action', 'Biography', 'History', 'Horror', 'Kids', 'Learning', 'Sci-Fi'];
-    const categories = category.map(cat => <Dropdown.Item key={cat}>{cat}</Dropdown.Item>);
+    const { title, category, id } = this.state;
     return (
       <div>
-        <Form>
-          <Form.Group controlId="formBasicText">
+        <Form onSubmit={this.handleSubmit}>
+          <Form.Group controlId="validationCustom01">
             <Form.Label>Book title</Form.Label>
-            <Form.Control type="text" value={title} placeholder="book title" />
+            <Form.Control type="text" key={id} name="title" value={title} onChange={this.handleChange} placeholder="book title" required />
           </Form.Group>
-
-          <DropdownButton
-            as={ButtonGroup}
-            key={category}
-            id={`dropdown-variants-${category}`}
-            title="Categories"
-          >
-            {categories}
-          </DropdownButton>
+          <Form.Group controlId="Form.ControlSelect1">
+            <Form.Label>Category</Form.Label>
+            <Form.Control name="category" value={category} onChange={this.handleChange} as="select">
+              <option> -</option>
+              <option>Action</option>
+              <option>Biography</option>
+              <option>History</option>
+              <option>Horror</option>
+              <option>Kids</option>
+              <option>Learning</option>
+              <option>Sci-Fi</option>
+            </Form.Control>
+          </Form.Group>
           <Button variant="primary" type="submit">
             Submit
           </Button>
@@ -44,4 +63,12 @@ class BookForm extends React.Component {
   }
 }
 
-export default BookForm;
+BookForm.propTypes = {
+  createBook: PropTypes.func.isRequired,
+};
+
+const mapDispatchToProps = dispatch => ({
+  createBook: book => dispatch(createBook(book)),
+});
+
+export default connect(null, mapDispatchToProps)(BookForm);

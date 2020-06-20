@@ -1,11 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import logger from 'redux-logger';
 import { Provider } from 'react-redux';
 import indexReducer from './reducers/index';
 import App from './components/App';
 
-const store = createStore(indexReducer);
+const store = createStore(indexReducer, composeWithDevTools(
+  applyMiddleware(logger),
+));
 
 const initialState = [
   {
@@ -36,24 +40,24 @@ const initialState = [
 ];
 
 store.dispatch({
-  type: 'CREATE_BOOK',
+  type: 'ADD_BOOK',
   book: initialState[0],
 });
 store.dispatch({
-  type: 'CREATE_BOOK',
+  type: 'ADD_BOOK',
   book: initialState[1],
 });
 
 store.dispatch({
-  type: 'CREATE_BOOK',
+  type: 'ADD_BOOK',
   book: initialState[2],
 });
 store.dispatch({
-  type: 'CREATE_BOOK',
+  type: 'ADD_BOOK',
   book: initialState[3],
 });
 store.dispatch({
-  type: 'CREATE_BOOK',
+  type: 'ADD_BOOK',
   book: initialState[4],
 });
 
