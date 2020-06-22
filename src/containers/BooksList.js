@@ -19,17 +19,33 @@ class BooksList extends React.Component {
 
   render() {
     const { books } = this.props;
-    const BooksList = books.books.map(
-      b => (
-        <Book
-          key={b.id}
-          Id={b.id}
-          title={b.title}
-          cat={b.category}
-          Click={() => this.handleRemove(b.id)}
-        />
-      ),
-    );
+    let BooksList;
+    if (books.filter === 'All') {
+      BooksList = books.books.map(
+        b => (
+          <Book
+            key={b.id}
+            Id={b.id}
+            title={b.title}
+            cat={b.category}
+            Click={() => this.handleRemove(b.id)}
+          />
+        ),
+      );
+    } else {
+      const booksFiltered = books.books.filter(book => book.category === books.filter);
+      BooksList = booksFiltered.map(
+        b => (
+          <Book
+            key={b.id}
+            Id={b.id}
+            title={b.title}
+            cat={b.category}
+            Click={() => this.handleRemove(b.id)}
+          />
+        ),
+      );
+    }
 
     return (
       <div>
@@ -57,6 +73,7 @@ BooksList.propTypes = {
 
 const mapStateToProps = state => ({
   books: state,
+  filter: state.filter,
 });
 
 const mapDispatchToProps = dispatch => ({
