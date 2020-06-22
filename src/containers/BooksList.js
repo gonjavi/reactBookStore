@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Table from 'react-bootstrap/Table';
 import Book from '../components/Book';
 import { removeBook } from '../actions/index';
+import CategoryFilter from './CategoryFilter';
 
 class BooksList extends React.Component {
   constructor(props) {
@@ -31,17 +32,20 @@ class BooksList extends React.Component {
     );
 
     return (
-      <Table striped bordered hover>
-        <thead>
-          <tr>
-            <th>BookID</th>
-            <th>Title</th>
-            <th>Category</th>
-            <th>Delete</th>
-          </tr>
-        </thead>
-        {BooksList}
-      </Table>
+      <div>
+        <CategoryFilter />
+        <Table striped bordered hover>
+          <thead>
+            <tr>
+              <th>BookID</th>
+              <th>Title</th>
+              <th>Category</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          {BooksList}
+        </Table>
+      </div>
     );
   }
 }
