@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Table from 'react-bootstrap/Table';
 import Book from '../components/Book';
 import { removeBook } from '../actions/index';
-import CategoryFilter from './CategoryFilter';
+import CategoryFilter from '../components/CategoryFilter';
 
 class BooksList extends React.Component {
   constructor(props) {
