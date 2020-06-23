@@ -3,18 +3,24 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Table from 'react-bootstrap/Table';
 import Book from '../components/Book';
-import { removeBook } from '../actions/index';
+import { removeBook, changeFilter } from '../actions/index';
 import CategoryFilter from '../components/CategoryFilter';
 
 class BooksList extends React.Component {
   constructor(props) {
     super(props);
     this.handleRemove = this.handleRemove.bind(this);
+    this.handleFilterChange = this.handleFilterChange.bind(this);
   }
 
   handleRemove(id) {
     const { removeBook } = this.props;
     removeBook(id);
+  }
+
+  handleFilterChange(category) {
+    const { changeFilter } = this.props;
+    changeFilter(category);
   }
 
   render() {
@@ -49,7 +55,7 @@ class BooksList extends React.Component {
 
     return (
       <div>
-        <CategoryFilter />
+        <CategoryFilter handleFilterChange={this.handleFilterChange} />
         <Table striped bordered hover>
           <thead>
             <tr>
@@ -69,6 +75,7 @@ class BooksList extends React.Component {
 BooksList.propTypes = {
   removeBook: PropTypes.func.isRequired,
   books: PropTypes.instanceOf(Array).isRequired,
+  changeFilter: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -78,6 +85,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   removeBook: id => dispatch(removeBook(id)),
+  changeFilter: category => dispatch(changeFilter(category)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(BooksList);

@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import Form from 'react-bootstrap/Form';
-import { changeFilter } from '../actions/index';
 
 class CategoryFilter extends React.Component {
   constructor(props) {
@@ -10,16 +8,16 @@ class CategoryFilter extends React.Component {
     this.state = {
       category: 'All',
     };
-    this.handleFilterChange = this.handleFilterChange.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
-  handleFilterChange(e) {
+  handleChange(e) {
     const { target: { value, name } } = e;
     this.setState({
       [name]: value,
     });
-    const { changeFilter } = this.props;
-    changeFilter(value);
+    const { handleFilterChange } = this.props;
+    handleFilterChange(value);
   }
 
   render() {
@@ -29,15 +27,15 @@ class CategoryFilter extends React.Component {
         <Form>
           <Form.Group controlId="Form.ControlSelect1">
             <Form.Label>Category Filter</Form.Label>
-            <Form.Control name="category" value={category} onChange={this.handleFilterChange} as="select">
-              <option>All</option>
-              <option>Action</option>
-              <option>Biography</option>
-              <option>History</option>
-              <option>Horror</option>
-              <option>Kids</option>
-              <option>Learning</option>
-              <option>Sci-Fi</option>
+            <Form.Control name="category" value={category} onChange={this.handleChange} as="select">
+              <option value="All">All</option>
+              <option value="Action">Action</option>
+              <option value="Biography">Biography</option>
+              <option value="History">History</option>
+              <option value="Horror">Horror</option>
+              <option value="Kids">Kids</option>
+              <option value="Learning">Learning</option>
+              <option value="Sci-Fi">Sci-Fi</option>
             </Form.Control>
           </Form.Group>
         </Form>
@@ -47,11 +45,7 @@ class CategoryFilter extends React.Component {
 }
 
 CategoryFilter.propTypes = {
-  changeFilter: PropTypes.func.isRequired,
+  handleFilterChange: PropTypes.func.isRequired,
 };
 
-const mapDispatchToProps = dispatch => ({
-  changeFilter: category => dispatch(changeFilter(category)),
-});
-
-export default connect(null, mapDispatchToProps)(CategoryFilter);
+export default CategoryFilter;
