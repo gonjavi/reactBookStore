@@ -14,6 +14,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #fafafa;
 }
 
 code {
@@ -24,4 +25,35 @@ code {
     Consolas,
     'Courier New',
     monospace;
+}
+
+.navbar {
+  background-color: white;
+  height: 95px;
+  border-bottom: 1px solid grey;
+}
+.logo {
+  margin-left: 100px;
+  width: 240px;
+  height: 37px;
+  font-family: Montserrat-Bold;
+  font-size: 30px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #0290ff;
+}
+.titles {
+  height: 16px;
+  opacity: 0.5;
+  font-family: Montserrat;
+  font-size: 13px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 1.9px;
+  color: var(--black-three);
 }

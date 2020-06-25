@@ -4,26 +4,30 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import BooksForm from '../containers/BookForm';
 import BooksList from '../containers/BooksList';
+import NavBar from '../containers/NavBar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
-    <Container>
-      <Row>
-        <Col />
-        <Col>
-          <BooksForm />
-        </Col>
-        <Col />
-      </Row>
-      <Row>
-        <Col />
-        <Col>
-          <BooksList />
-        </Col>
-        <Col />
-      </Row>
-    </Container>
+    <div>
+      <NavBar />
+      <Container>
+        <Row>
+          <Col />
+          <Col>
+            <BooksForm />
+          </Col>
+          <Col />
+        </Row>
+        <Row>
+          <Col />
+          <Col>
+            <BooksList />
+          </Col>
+          <Col />
+        </Row>
+      </Container>
+    </div>
   );
 }
 

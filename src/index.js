@@ -6,6 +6,7 @@ import logger from 'redux-logger';
 import { Provider } from 'react-redux';
 import indexReducer from './reducers/index';
 import App from './components/App';
+import './index.css';
 
 const store = createStore(indexReducer, composeWithDevTools(
   applyMiddleware(logger),
