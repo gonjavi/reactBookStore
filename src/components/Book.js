@@ -22,7 +22,9 @@ const Book = props => {
           <Col className="comments2" lg={2}>Edit</Col>
         </Row>
       </Col>
-      <Col lg={3} />
+      <Col lg={3}>
+        <div className="progress" />
+      </Col>
       <Col lg={3}>
         <div className="chapter">CURRENT CHAPTER</div>
         <div className="introduction">Introduction</div>

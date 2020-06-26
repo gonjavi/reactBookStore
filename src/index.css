@@ -128,6 +128,8 @@ code {
   border-right: 1px solid #ececec;
 }
 
+.progress {}
+
 .chapter {
   opacity: 0.5;
   font-family: RobotoSlab;
