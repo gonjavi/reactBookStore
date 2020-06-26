@@ -37,16 +37,15 @@ class BookForm extends React.Component {
   render() {
     const { title, category, id } = this.state;
     return (
-      <div>
-         <Row>
-        <Form onSubmit={this.handleSubmit}>
-          <Col>
+      <form className="form" onSubmit={this.handleSubmit}>
+        <Row>
+          <Col lg={6}>
             <Form.Group controlId="validationCustom01">
               <Form.Label>Book title</Form.Label>
               <Form.Control type="text" key={id} name="title" value={title} onChange={this.handleChange} placeholder="book title" required />
             </Form.Group>
           </Col>
-          <Col>
+          <Col lg={3}>
             <Form.Group controlId="Form.ControlSelect1">
               <Form.Label>Category</Form.Label>
               <Form.Control name="category" value={category} onChange={this.handleChange} as="select">
@@ -61,14 +60,13 @@ class BookForm extends React.Component {
               </Form.Control>
             </Form.Group>
           </Col>
-          <Col>
-            <Button variant="primary" type="submit">
+          <Col lg={3}>
+            <Button className="submit" variant="primary" type="submit">
               Submit
             </Button>
           </Col>
-        </Form>
         </Row>
-      </div>
+      </form>
     );
   }
 }

@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import { CircularProgressbar } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
 
 const Book = props => {
   const {
@@ -22,8 +24,10 @@ const Book = props => {
           <Col className="comments2" lg={2}>Edit</Col>
         </Row>
       </Col>
-      <Col lg={3}>
-        <div className="progress" />
+      <Col lg={3} className="pro">
+        <div className="progress">
+          <CircularProgressbar value={10} text={`${10}%`} />
+        </div>
       </Col>
       <Col lg={3}>
         <div className="chapter">CURRENT CHAPTER</div>

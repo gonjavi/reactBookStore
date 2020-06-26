@@ -13,7 +13,7 @@ function App() {
       <NavBar />
       <Container>
         <Row>
-          <Col>
+          <Col className="wrapper">
             <BooksList />
           </Col>
         </Row>
