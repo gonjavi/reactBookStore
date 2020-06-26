@@ -8,6 +8,9 @@ import indexReducer from './reducers/index';
 import App from './components/App';
 import './index.css';
 
+require('typeface-montserrat');
+require('typeface-roboto-slab');
+
 const store = createStore(indexReducer, composeWithDevTools(
   applyMiddleware(logger),
 ));
