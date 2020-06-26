@@ -26,7 +26,7 @@ class CategoryFilter extends React.Component {
       <div>
         <Form>
           <Form.Group controlId="Form.ControlSelect1">
-            <Form.Label>Category Filter</Form.Label>
+            <Form.Label>Categories</Form.Label>
             <Form.Control name="category" value={category} onChange={this.handleChange} as="select">
               <option value="All">All</option>
               <option value="Action">Action</option>

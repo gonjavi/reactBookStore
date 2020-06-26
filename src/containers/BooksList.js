@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Table from 'react-bootstrap/Table';
 import Book from '../components/Book';
 import { removeBook, changeFilter } from '../actions/index';
 import CategoryFilter from '../components/CategoryFilter';
@@ -56,17 +55,7 @@ class BooksList extends React.Component {
     return (
       <div>
         <CategoryFilter handleFilterChange={this.handleFilterChange} />
-        <Table striped bordered hover>
-          <thead>
-            <tr>
-              <th>BookID</th>
-              <th>Title</th>
-              <th>Category</th>
-              <th>Delete</th>
-            </tr>
-          </thead>
-          {BooksList}
-        </Table>
+        {BooksList}
       </div>
     );
   }

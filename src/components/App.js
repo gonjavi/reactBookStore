@@ -13,18 +13,14 @@ function App() {
       <NavBar />
       <Container>
         <Row>
-          <Col />
-          <Col>
-            <BooksForm />
-          </Col>
-          <Col />
-        </Row>
-        <Row>
-          <Col />
           <Col>
             <BooksList />
           </Col>
-          <Col />
+        </Row>
+        <Row>
+          <Col>
+            <BooksForm />
+          </Col>
         </Row>
       </Container>
     </div>

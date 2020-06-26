@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 
 const NavBar = (props) => {
@@ -8,7 +8,7 @@ const NavBar = (props) => {
         <div className="logo">Bookstore CMS</div>
         <div className="titles">Books</div>
         <div className="titles">Categories</div>
-      </Navbar> 
+      </Navbar>
     </div>
   );
 };
