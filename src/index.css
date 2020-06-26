@@ -74,6 +74,7 @@ code {
 }
 .categories {
   width: 30%; 
+  margin-top: 10px;
 }
 
 .book {
@@ -99,8 +100,7 @@ code {
   color: var(--black-three);
   margin-top: 32px;
 }
-.title {
-  height: 29px;
+.title {  
   font-family: RobotoSlab;
   font-size: 22px;
   font-weight: bold;
@@ -199,4 +199,59 @@ code {
   border-radius: 3px;
   background-color: #0290ff;
   margin-top: 30px;
+}
+@media only screen and (max-width: 991px) {
+  .logo {
+    margin-left: 7%;
+  }
+  .icon {
+    right: 10%;
+  }
+  .categories {
+    width: 40%; 
+  }
+  .icon-in {
+    padding-left: 13px;
+    padding-top: 10px;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .progress {
+    display: none;
+  }
+  .logo {
+    margin-left: 20%;
+    text-align: center;
+  }
+  .icon {
+    right: 10%;
+  }
+  .categories {
+    width: 100%; 
+   
+  } 
+  .submit {
+    width: 100%;
+  }
+  .top {
+    padding-top: 10px;
+  }
+  .title {  
+    font-family: RobotoSlab;
+    font-size: 18px;
+  }  
+  .book {
+    margin-left: 0.2%;
+  }
+  .icon, .titles {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .logo {
+    margin-left: 15%;
+    text-align: center;
+  } 
 }

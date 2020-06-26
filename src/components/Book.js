@@ -15,25 +15,24 @@ const Book = props => {
   } = props;
   return (
     <Row key={Id} className="book">
-      <Col lg={6}>
+      <Col lg={6} md={6} sm={6} xs={6}>
         <div className="categoryt">{cat}</div>
         <div className="title">{title}</div>
         <Row className="top">
-          <Col className="comments" lg={2}>Comments</Col>
-          <Col className="comments" lg={2}><Button className="bu" onClick={() => Click()} variant="link" type="button">Remove</Button></Col>
-          <Col className="comments2" lg={2}>Edit</Col>
+          <Col className="comments" lg={2} md={4} sm={4}>Comments</Col>
+          <Col className="comments" lg={2} md={3} sm={3}><Button className="bu" onClick={() => Click()} variant="link" type="button">Remove</Button></Col>
+          <Col className="comments2" lg={2} md={3} sm={3}>Edit</Col>
         </Row>
       </Col>
-      <Col lg={3} className="pro">
+      <Col lg={3} md={3} sm={3} xs={1} className="pro">
         <div className="progress">
           <CircularProgressbar value={10} text={`${10}%`} />
         </div>
       </Col>
-      <Col lg={3}>
+      <Col lg={3} md={3} sm={3} xs={3}>
         <div className="chapter">CURRENT CHAPTER</div>
         <div className="introduction">Introduction</div>
         <Button className="update" variant="primary">UPDATE PROGRESS</Button>
-
       </Col>
     </Row>
   );
