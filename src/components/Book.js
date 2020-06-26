@@ -21,12 +21,14 @@ const Book = props => {
           <Col className="comments" lg={2}><Button className="bu" onClick={() => Click()} variant="link" type="button">Remove</Button></Col>
           <Col className="comments2" lg={2}>Edit</Col>
         </Row>
-        <Row>
-          <Col lg={2}></Col>
-        </Row>
       </Col>
       <Col lg={3} />
-      <Col lg={3} />
+      <Col lg={3}>
+        <div className="chapter">CURRENT CHAPTER</div>
+        <div className="introduction">Introduction</div>
+        <Button className="update" variant="primary">UPDATE PROGRESS</Button>
+
+      </Col>
     </Row>
   );
 };
