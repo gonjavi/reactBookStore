@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { connect } from 'react-redux';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 import { createBook } from '../actions/index';
 
 class BookForm extends React.Component {
@@ -36,28 +38,35 @@ class BookForm extends React.Component {
     const { title, category, id } = this.state;
     return (
       <div>
-        <Form onSubmit={this.handleSubmit}>
-          <Form.Group controlId="validationCustom01">
-            <Form.Label>Book title</Form.Label>
-            <Form.Control type="text" key={id} name="title" value={title} onChange={this.handleChange} placeholder="book title" required />
-          </Form.Group>
-          <Form.Group controlId="Form.ControlSelect1">
-            <Form.Label>Category</Form.Label>
-            <Form.Control name="category" value={category} onChange={this.handleChange} as="select">
-              <option> -</option>
-              <option>Action</option>
-              <option>Biography</option>
-              <option>History</option>
-              <option>Horror</option>
-              <option>Kids</option>
-              <option>Learning</option>
-              <option>Sci-Fi</option>
-            </Form.Control>
-          </Form.Group>
-          <Button variant="primary" type="submit">
-            Submit
-          </Button>
-        </Form>
+        <Row><Col className="addbooktitle">ADD NEW BOOK</Col></Row>
+        <form className="form" onSubmit={this.handleSubmit}>
+          <Row>
+            <Col lg={6} md={5}>
+              <Form.Group controlId="validationCustom01">
+                <Form.Control type="text" key={id} name="title" value={title} onChange={this.handleChange} placeholder="Book title" required />
+              </Form.Group>
+            </Col>
+            <Col lg={3} md={3}>
+              <Form.Group controlId="Form.ControlSelect1">
+                <Form.Control name="category" value={category} onChange={this.handleChange} as="select">
+                  <option>Category</option>
+                  <option>Action</option>
+                  <option>Biography</option>
+                  <option>History</option>
+                  <option>Horror</option>
+                  <option>Kids</option>
+                  <option>Learning</option>
+                  <option>Sci-Fi</option>
+                </Form.Control>
+              </Form.Group>
+            </Col>
+            <Col lg={3} md={3}>
+              <Button className="submit" variant="primary" type="submit">
+                ADD BOOK
+              </Button>
+            </Col>
+          </Row>
+        </form>
       </div>
     );
   }
