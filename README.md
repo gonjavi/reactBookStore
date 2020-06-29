@@ -1,5 +1,5 @@
 ## React-Redux Book Store
-This is a Book Store app built with React, Redux, and Bootstrap.
+This is a Book Store app built with React, Redux, CSS, and Bootstrap.
 
 ![screenshot](./bookstore.png)
 
