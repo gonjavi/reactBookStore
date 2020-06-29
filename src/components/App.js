@@ -18,7 +18,7 @@ function App() {
           </Col>
         </Row>
         <Row>
-          <Col>
+          <Col className="bform">
             <BooksForm />
           </Col>
         </Row>
